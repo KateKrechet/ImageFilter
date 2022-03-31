@@ -19,7 +19,10 @@ namespace ImageFilter
             InitializeComponent();
             filters = new List<IFilter>()
             {
-                new BlackAndWhite()
+                new BlackAndWhite(),
+                new Negative(),
+                new Mirror(),
+                new GreenFilter()
             };
             for (int i = 0; i < filters.Count; i++)
                 listBox1.Items.Add(filters[i].GetName());
@@ -39,7 +42,17 @@ namespace ImageFilter
             int i = listBox1.SelectedIndex;
             if(i>=0)
             {
-                pictureBox1.Image = filters[i].Apply(bitmap);
+                bitmap = filters[i].Apply(bitmap);
+                pictureBox1.Image = bitmap;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if(bitmap!=null)
+            {
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                    bitmap.Save(saveFileDialog1.FileName);
             }
         }
     }

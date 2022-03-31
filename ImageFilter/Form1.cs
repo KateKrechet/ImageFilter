@@ -22,6 +22,7 @@ namespace ImageFilter
                 new BlackAndWhite(),
                 new Negative(),
                 new Mirror(),
+                new WhiteAndGrey(),
                 new GreenFilter()
             };
             for (int i = 0; i < filters.Count; i++)
